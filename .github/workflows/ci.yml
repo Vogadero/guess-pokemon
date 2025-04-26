@@ -1,0 +1,86 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ['main', 'dev']
+  pull_request:
+    branches: ['main']
+
+env:
+  VITE_BASE_URL: '/' # 根据实际部署路径调整
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      - name: Run Coverage
+        run: npm run coverage
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Run E2E Tests
+  run: npm run test:e2e
+
+  deploy-prod:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true
+
+      - name: Notify Slack
+  uses: rtCamp/action-slack-notify@v2
+  env:
+    SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    SLACK_COLOR: '#36a64f'
+    SLACK_TITLE: 'Deploy Success'
+    SLACK_MESSAGE: 'Production deployment completed'
+  if: success()
+
+  - name: Cache Vite Build
+  uses: actions/cache@v3
+  with:
+    path: |
+      node_modules
+      dist
+    key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json') }}
