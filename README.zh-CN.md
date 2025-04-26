@@ -9,7 +9,7 @@
 一款基于Vue 3的趣味宝可梦猜谜游戏，通过识别剪影猜测正确的宝可梦，体验收集与挑战的乐趣！
 
 ## 🌐 在线演示
-[立即体验](https://your-demo-url.com) | [备用链接](https://mirror-demo-url.com)
+[立即体验](https://your-demo-url.com) | [备用链接](https://vogadero.github.io/guess-pokemon/)
 
 ## ✨ 功能亮点
 - 🎯 随机生成宝可梦剪影挑战

@@ -9,7 +9,7 @@ English | [简体中文](./README.zh-CN.md)
 A fun Pokémon guessing game built with Vue 3, challenge yourself to identify Pokémon by their silhouettes!
 
 ## 🌐 Live Demo
-[Play Now](https://your-demo-url.com) | [Mirror Link](https://mirror-demo-url.com)
+[Play Now](https://vogadero.github.io/guess-pokemon/) | [Mirror Link](https://mirror-demo-url.com)
 
 ## ✨ Features
 - 🎯 Random Pokémon silhouette challenges

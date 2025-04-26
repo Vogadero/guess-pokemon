@@ -2,6 +2,7 @@
   "name": "guess-pokemon",
   "version": "0.1.0",
   "private": true,
+  "description": "Guess Pokémon Game",
   "type": "module",
   "author": "Vogadero",
   "repository": {
