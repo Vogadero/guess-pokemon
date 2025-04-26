@@ -27,9 +27,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm ci
-          npm list eslint # 验证ESLint安装
-          npm list -g # 检查全局安装包
+          # 强制清理旧缓存
+          npm cache clean --force
+          # 忽略审计和资金提示
+          npm ci --no-audit --no-fund --prefer-offline
+          # 验证核心依赖
+          npm list eslint @vue/eslint-config-typescript vite
 
       - name: Run Linter
         run: npx eslint . --fix  # 使用npx执行
