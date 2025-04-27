@@ -44,7 +44,9 @@ jobs:
           npx eslint . --fix --no-error-on-unmatched-pattern || echo "Linting step failed."
 
       - name: Run Unit Tests
-        run: npm run test:unit
+        run: |
+          export PATH="./node_modules/.bin:$PATH"
+          npm run test:unit
 
       - name: Run Coverage
         run: npm run coverage
