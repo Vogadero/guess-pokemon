@@ -30,9 +30,7 @@ jobs:
           # 清理缓存
           npm cache clean --force
           # 完整安装依赖
-          npm ci --no-audit --no-fund
-          # 显式安装ESLint插件
-          npm install vitest@^2.1.8 @vue/test-utils@^2.4.6 eslint-plugin-vue@^9.30.0 @typescript-eslint/parser@latest --no-save
+          npm ci --no-audit --no-fund --include=dev
           # 验证插件安装
           npm ls
 
