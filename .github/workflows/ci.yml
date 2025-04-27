@@ -39,7 +39,7 @@ jobs:
 
       - name: Run Linter
         run: |
-          npx eslint . --fix --no-error-on-unmatched-pattern || echo "Linting step failed."
+          npx eslint . --fix --no-error-on-unmatched-pattern
 
       - name: Run Unit Tests
         run: npm run test:unit
