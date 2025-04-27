@@ -1,6 +1,6 @@
 <template>
   <section v-if="isLoading" class="flex flex-col justify-center items-center w-screen h-screen">
-    <Spinner />
+    <LoadingSpinner />
     <h1 class="text-3xl">请稍等...</h1>
     <h3 class="animate-pulse">加载神奇宝贝中</h3>
   </section>
@@ -38,10 +38,10 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import PokemonOptions from '../components/PokemonOptions.vue';
 import PokemonPicture from '../components/PokemonPicture.vue';
-import Spinner from "./Spinner.vue";
+import LoadingSpinner from "./LoadingSpinner.vue";
 import { usePokemonGame } from '../hooks/usePokemonGame';
 
 const {
