@@ -8,7 +8,7 @@ on:
 
 env:
   NODE_ENV: production
-  VITE_BASE_URL: '/' # 根据实际部署路径调整
+  VITE_BASE_URL: '/' # 必须使用相对路径
 
 jobs:
   test-and-build:
@@ -27,12 +27,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          # 强制清理旧缓存
-          npm cache clean --force
-          # 忽略审计和资金提示
-          npm ci --no-audit --no-fund --prefer-offline
-          # 验证核心依赖
-          npm list eslint @vue/eslint-config-typescript vite
+          # 分步安装核心依赖
+          npm install eslint @vue/eslint-config-typescript --no-audit --no-fund
+          # 完整安装其他依赖
+          npm ci --no-audit --no-fund
+          # 验证依赖树
+          npm ls --all
 
       - name: Run Linter
         run: npx eslint . --fix  # 使用npx执行
