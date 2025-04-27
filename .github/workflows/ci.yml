@@ -46,6 +46,9 @@ jobs:
           # 指定测试目录并允许空测试
           npx vitest run --dir src --passWithNoTests
 
+      - name: Run Coverage
+        run: npm run coverage
+
       - name: Build Project
         run: |  # 添加管道符号
           npm run build
