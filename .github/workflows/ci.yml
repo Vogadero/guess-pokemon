@@ -32,7 +32,7 @@ jobs:
           # 完整安装依赖
           npm ci --no-audit --no-fund
           # 显式安装ESLint插件
-          npm install eslint-plugin-vue@^9.30.0 @typescript-eslint/parser@latest vitest@^2.1.8 --no-save
+          npm install eslint-plugin-vue@^9.30.0 @typescript-eslint/parser@latest vitest@2.1.8 @vue/test-utils@2.4.6 --no-save
           # 验证插件安装
           npm ls
 
@@ -104,3 +104,11 @@ jobs:
         run: |
           npm cache clean --force
           rm -rf node_modules
+
+      - name: Cache Test Reports
+        uses: actions/cache@v3
+        with:
+          path: |
+            coverage
+            test-results.xml
+          key: ${{ runner.os }}-test-${{ hashFiles('package-lock.json') }}
