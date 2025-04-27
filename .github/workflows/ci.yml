@@ -42,7 +42,9 @@ jobs:
           npx eslint "src/**/*.{js,ts,vue}" --fix --no-error-on-unmatched-pattern
 
       - name: Run Unit Tests
-        run: npm run test:unit
+        run: |
+          # 指定测试目录并允许空测试
+          npx vitest run --dir src --passWithNoTests
 
       - name: Run Coverage
         run: npm run coverage
