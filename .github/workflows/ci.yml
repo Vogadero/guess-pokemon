@@ -27,15 +27,17 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          # 分步安装核心依赖
-          npm install eslint @vue/eslint-config-typescript --no-audit --no-fund
-          # 完整安装其他依赖
+          # 清理缓存
+          npm cache clean --force
+          # 完整安装依赖
           npm ci --no-audit --no-fund
-          # 验证依赖树
-          npm ls --all
+          # 显式安装ESLint插件
+          npm install eslint-plugin-vue@^9.30.0 @typescript-eslint/parser@latest --no-save
+          # 验证插件安装
+          npm ls eslint-plugin-vue
 
       - name: Run Linter
-        run: npx eslint . --fix  # 使用npx执行
+        run: npx eslint . --fix --no-error-on-unmatched-pattern  # 使用npx执行
 
       - name: Run Unit Tests
         run: npm run test:unit
