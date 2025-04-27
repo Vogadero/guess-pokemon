@@ -28,7 +28,7 @@ jobs:
       - name: Install Dependencies
         run: |
           # 清理缓存
-          rm -rf node_modules package-lock.json
+          npm cache clean --force
           # 完整安装依赖
           npm ci --no-audit --no-fund
           # 显式安装ESLint插件
