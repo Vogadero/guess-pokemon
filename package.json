@@ -27,7 +27,7 @@
     "dev": "vite",
     "build": "npm run type-check && npm run build-only",
     "build-only": "vite build",
-    "type-check": "npx vue-tsc --build",
+    "type-check": "./node_modules/.bin/vue-tsc --build",
     "preview": "vite preview",
     "test:unit": "vitest run --dir src --passWithNoTests",
     "test:e2e": "cypress run --config-file cypress.config.js",
