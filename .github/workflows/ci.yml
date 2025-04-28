@@ -30,11 +30,6 @@ jobs:
           npm ci --no-audit --no-fund # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
 
-      - name: Verify ESLint Plugins
-        run: |
-          echo "Installed ESLint version: $(./node_modules/.bin/eslint --version)"
-          ls -la node_modules/eslint-plugin-vue  # 确认插件是否存在
-
       - name: Run Linter
         run: |
           ./node_modules/.bin/eslint "src/**/*.{js,ts,vue}" --fix --no-error-on-unmatched-pattern
