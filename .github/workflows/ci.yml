@@ -63,16 +63,7 @@ jobs:
           SLACK_COLOR: '#36a64f'
           SLACK_TITLE: 'Deploy Success'
           SLACK_MESSAGE: 'Production deployment completed'
-
-      - name: Notify Slack on Failure
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: '#ff0000'
-          SLACK_TITLE: 'CI Pipeline Failed'
-          SLACK_MESSAGE: 'Check ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
-
+          
       - name: Clean Cache
         run: |
           npm cache clean --force
