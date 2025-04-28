@@ -25,15 +25,43 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+
       - name: Install Dependencies
         run: | 
           npm ci --no-audit --no-fund --include=dev # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
 
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      - name: Run E2E Tests
+        run: npm run test:e2e
+
       - name: Build Project
         env:
           NODE_ENV: production
+          VITE_BASE_URL: ${{ env.VITE_BASE_URL }}
         run: npm run build
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Notify Slack on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: '#ff0000'
+          SLACK_TITLE: 'CI Pipeline Failed'
+          SLACK_MESSAGE: 'Tests or build failed in ${{ github.ref }}'
 
   deploy-prod:
     needs: test-and-build
@@ -44,16 +72,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v4
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
         with:
-          node-version: 18
-          cache: 'npm'
-
-      - name: Install and Build
-        run: |
-          npm ci
-          npm run build
+          name: dist
+          path: dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -61,7 +84,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 
-      - name: Notify Slack
+      - name: Notify Slack on Success
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -69,16 +92,7 @@ jobs:
           SLACK_COLOR: '#36a64f'
           SLACK_TITLE: 'Deploy Success'
           SLACK_MESSAGE: 'Production deployment completed'
-
+  
       - name: Clean Cache
         run: |
           npm cache clean --force
-          rm -rf node_modules
-
-      - name: Cache Test Reports
-        uses: actions/cache@v3
-        with:
-          path: |
-            coverage
-            test-results.xml
-          key: ${{ runner.os }}-test-${{ hashFiles('package-lock.json') }}
