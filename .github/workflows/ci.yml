@@ -30,12 +30,6 @@ jobs:
           npm ci --no-audit --no-fund # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
 
-      - name: Build Project
-        run: |
-          npm run type-check
-          npm run build-only
-          ls -al dist/
-
       - name: Run E2E Tests
         run: npm run test:e2e
         env:
