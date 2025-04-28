@@ -8,7 +8,7 @@ on:
 
 env:
   NODE_ENV: production
-  VITE_BASE_URL: '/' # 必须使用相对路径
+  VITE_BASE_URL: ${{ github.ref == 'refs/heads/main' && '/guess-pokemon/' || '/' }}
 
 jobs:
   test-and-build:
@@ -26,16 +26,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: |
-          # 清理缓存
-          npm cache clean --force
-          # 完整安装依赖
-          npm ci --no-audit --no-fund --include=dev
-          # 验证插件安装
-          npm ls
-
-      - name: Debug Dependencies
-        run: npm ls
+        run: npm ci --no-audit --no-fund # 完整安装依赖
 
       - name: Run Linter
         run: |
@@ -50,13 +41,17 @@ jobs:
         run: npm run coverage
 
       - name: Build Project
-        run: |  # 添加管道符号
-          npm run build
-          ls -al dist/  # 查看构建产物
-          du -sh dist/  # 检查文件大小
+        run: |
+          npm run type-check
+          npm run build-only
+          ls -al dist/
 
       - name: Run E2E Tests
         run: npm run test:e2e
+        env:
+          CYPRESS_BASE_URL: http://localhost:5173 # 需要对应构建后的地址
+          CI: true  # 添加 CI 环境变量
+        timeout-minutes: 10 # 增加超时时间
 
   deploy-prod:
     needs: test-and-build
@@ -84,21 +79,22 @@ jobs:
           publish_dir: ./dist
 
       - name: Notify Slack
+        if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: '#36a64f'
           SLACK_TITLE: 'Deploy Success'
           SLACK_MESSAGE: 'Production deployment completed'
-        if: success()
 
-      - name: Cache Vite Build
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            dist
-          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json') }}
+      - name: Notify Slack on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: '#ff0000'
+          SLACK_TITLE: 'CI Pipeline Failed'
+          SLACK_MESSAGE: 'Check ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
 
       - name: Clean Cache
         run: |
