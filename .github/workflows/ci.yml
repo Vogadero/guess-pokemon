@@ -26,7 +26,14 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci --no-audit --no-fund # 完整安装依赖
+        run: | 
+          npm ci --no-audit --no-fund # 完整安装依赖
+          npm rebuild # 修复可能的二进制文件问题
+
+      - name: Verify ESLint Plugins
+        run: |
+          echo "Installed ESLint version: $(npx eslint --version)"
+          npx eslint --print-config .eslintrc.js > /dev/null
 
       - name: Run Linter
         run: |
