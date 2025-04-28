@@ -17,7 +17,8 @@ jobs:
       matrix:
         node-version: [18]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -30,6 +31,9 @@ jobs:
           npm ci --no-audit --no-fund --only=dev # 完整安装依赖
           npm install npm-run-all --no-audit --no-fund # 安装 npm-run-all
           npm rebuild # 修复可能的二进制文件问题
+
+      - name: Install npm-run-all
+        run: npm install npm-run-all --save-dev
 
       - name: Build Project
         run: npm run build
