@@ -28,7 +28,7 @@ jobs:
 
       - name: Install Dependencies
         run: | 
-          npm ci --no-audit --no-fund --only=dev # 完整安装依赖
+          npm ci --no-audit --no-fund --include=dev # 完整安装依赖
           npm install npm-run-all --no-audit --no-fund # 安装 npm-run-all
           npm rebuild # 修复可能的二进制文件问题
 
@@ -44,7 +44,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Setup Node.js 18
         uses: actions/setup-node@v4
