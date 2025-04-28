@@ -28,12 +28,8 @@ jobs:
 
       - name: Install Dependencies
         run: | 
-          npm ci --no-audit --no-fund --include=dev # 完整安装依赖
-          npm install npm-run-all --no-audit --no-fund # 安装 npm-run-all
+          npm ci --no-audit --no-fund # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
-
-      - name: Install npm-run-all
-        run: npm install npm-run-all --save-dev
 
       - name: Build Project
         run: npm run build
