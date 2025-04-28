@@ -30,11 +30,6 @@ jobs:
           npm ci --no-audit --no-fund # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
 
-      - name: Run Unit Tests
-        run: |
-          # 指定测试目录并允许空测试
-          npx vitest run --dir src --passWithNoTests
-
       - name: Run Coverage
         run: npm run coverage
 
