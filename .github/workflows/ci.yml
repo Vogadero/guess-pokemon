@@ -27,8 +27,11 @@ jobs:
 
       - name: Install Dependencies
         run: | 
-          npm ci --no-audit --no-fund # 完整安装依赖
+          npm ci --no-audit --no-fund --only=dev # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
+
+      - name: Build Project
+        run: npm run build
 
   deploy-prod:
     needs: test-and-build
@@ -63,7 +66,7 @@ jobs:
           SLACK_COLOR: '#36a64f'
           SLACK_TITLE: 'Deploy Success'
           SLACK_MESSAGE: 'Production deployment completed'
-          
+
       - name: Clean Cache
         run: |
           npm cache clean --force
