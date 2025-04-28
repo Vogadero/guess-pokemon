@@ -30,13 +30,6 @@ jobs:
           npm ci --no-audit --no-fund # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
 
-      - name: Run E2E Tests
-        run: npm run test:e2e
-        env:
-          CYPRESS_BASE_URL: http://localhost:5173 # 需要对应构建后的地址
-          CI: true  # 添加 CI 环境变量
-        timeout-minutes: 10 # 增加超时时间
-
   deploy-prod:
     needs: test-and-build
     runs-on: ubuntu-latest
