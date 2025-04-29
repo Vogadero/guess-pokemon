@@ -32,7 +32,7 @@ jobs:
           key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install Dependencies
-        run: | 
+        run: |
           npm ci --no-audit --no-fund --include=dev # 完整安装依赖
           npm rebuild # 修复可能的二进制文件问题
 
@@ -54,7 +54,8 @@ jobs:
         env:
           NODE_ENV: production
           VITE_BASE_URL: ${{ env.VITE_BASE_URL }}
-        run: npm run build
+        run: |
+          npm run build -- --base=/guess-pokemon/  # 显式传递 base 参数
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
@@ -100,7 +101,7 @@ jobs:
           SLACK_COLOR: '#36a64f'
           SLACK_TITLE: 'Deploy Success'
           SLACK_MESSAGE: 'Production deployment completed'
-  
+
       - name: Clean Cache
         run: |
           npm cache clean --force
