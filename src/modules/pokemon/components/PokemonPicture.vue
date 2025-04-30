@@ -6,6 +6,7 @@
 </template>
 
 <script setup lang="ts">
+import fallbackGif from '@/assets/fallback-pokemon.gif?url';
 import { computed } from 'vue';
 
 interface Props {
@@ -23,9 +24,11 @@ const pokemonImg = computed(() => {
 
 // 错误处理
 const handleImageError = (e: Event) => {
-  const img = e.target as HTMLImageElement;
-  img.src = '/fallback-pokemon.gif';
-};
+  const img = e.target as HTMLImageElement
+  img.src = fallbackGif;
+   // 防止循环报错，移除事件监听器
+  img.onerror = null
+}
 </script>
 
 <style scoped>
