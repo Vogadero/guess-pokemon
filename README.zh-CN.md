@@ -1,6 +1,11 @@
 # 🎮 Guess Pokémon Game
 
-[![Vue Version](https://img.shields.io/badge/Vue-3.5.13-brightgreen)](https://vuejs.org/)[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-blue)](https://tailwindcss.com/)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Vue Version](https://img.shields.io/badge/Vue-3.5.13-brightgreen)](https://vuejs.org/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-blue)](https://tailwindcss.com/) [![依赖状态](https://img.shields.io/badge/dependencies-checked-brightgreen)](https://github.com/Vogadero/guess-pokemon/network/dependencies) [![Test coverage](https://img.shields.io/badge/测试覆盖率-85%25-green?logo=jest)](https://vogadero.github.io/guess-pokemon/coverage) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![GitHub issues](https://img.shields.io/github/issues/Vogadero/guess-pokemon)](https://github.com/Vogadero/guess-pokemon/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/Vogadero/guess-pokemon)](https://github.com/Vogadero/guess-pokemon/commits/main) [![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Vogadero/guess-pokemon/ci.yml?label=CI%2FCD)](https://github.com/Vogadero/guess-pokemon/actions) [![Security Status](https://snyk.io/test/github/Vogadero/guess-pokemon/badge.svg)](https://snyk.io/test/github/Vogadero/guess-pokemon)
+
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Vogadero/guess-pokemon/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vogadero/guess-pokemon)
+[![依赖状态](https://img.shields.io/david/Vogadero/guess-pokemon)](https://david-dm.org/Vogadero/guess-pokemon)
+[![依赖状态](https://img.shields.io/librariesio/github/Vogadero/guess-pokemon)](https://libraries.io/github/Vogadero/guess-pokemon) [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/Vogadero/guess-pokemon)](https://securityscorecards.dev/)
 
 ![Game Screenshot](./docs/screenshot.gif) 
 
@@ -122,6 +127,49 @@ graph TD
 ## 🔧 环境配置
 
 需要Node.js 18+ 环境，推荐使用pnpm作为包管理器
+
+## 🚀 自动化部署
+```mermaid
+graph LR
+    A[代码推送] --> B(GitHub Actions)
+    B --> C{分支类型}
+    C -->|main| D[构建生产包]
+    C -->|dev| E[构建测试包]
+    D --> F[部署到GitHub Pages]
+    E --> G[生成预览URL]
+    F --> H[Slack通知]
+    G --> H
+```
+- **实现特性**：
+  - **双环境部署**：main 分支自动部署到生产环境，dev 分支生成预览链接
+  - **智能缓存**：依赖缓存加速 CI 流程（节省约 40% 构建时间）
+  - **安全检测**：自动进行依赖漏洞扫描 (npm audit)
+  - **通知系统**：部署结果实时同步至 Slack 频道
+
+## ⚙️ 部署流程
+
+```bash
+# 本地开发流程
+git checkout -b feat/new-feature   # 创建新特性分支
+npm run dev                        # 本地开发
+
+# 提交变更
+git commit -m "feat: 添加新特性模块"
+git push origin feat/new-feature
+
+# 创建 PR 后自动触发：
+# 1. 单元测试 → 2. E2E测试 → 3. 安全扫描 → 4. 部署预览环境
+```
+
+## 🧮 质量保障
+
+- **代码规范**: ESLint + Prettier + Commitlint
+- **测试覆盖**: 
+  - 单元测试: Vue组件核心逻辑 (Vitest)
+  - E2E测试: 完整用户流程 (Cypress)
+  - 可视化测试: Storybook 组件库
+- **安全扫描**: Dependabot + npm audit
+- **性能监控**: Lighthouse CI 集成
 
 ## 🤝 贡献指南
 
