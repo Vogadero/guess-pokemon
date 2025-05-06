@@ -76,26 +76,11 @@ jobs:
 
         # 执行端到端测试
       - name: Run E2E Tests
-        uses: cypress-io/github-action@v6
-        with:
-          # 使用官方 action 替代手动启动
-          start: npm run dev
-          wait-on: 'http://localhost:5173'
-          wait-on-timeout: 120
-          # 增加专用配置
-          config: "baseUrl=http://localhost:5173,viewportWidth=1280,viewportHeight=720,defaultCommandTimeout=15000"
-          # 浏览器参数
-          browser: chrome
-          # 调试必要参数
-          headed: true
-          record: true
-          # 开启视频录制和失败重试
-          command: npx cypress run --browser chrome --headed --record --retries 2
+        run: |
+          # 带自定义 base URL 参数运行 E2E 测试
+          npm run test:e2e -- --config baseUrl=http://localhost:5173
         env:
-          # 强制设置 TERM 类型
-          TERM: xterm-color
-          CYPRESS_RETRIES: 2
-          # 传递基础路径
+          # 设置 Cypress 全局基础 URL
           CYPRESS_baseUrl: http://localhost:5173
 
         # 构建项目
