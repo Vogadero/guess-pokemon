@@ -1,6 +1,7 @@
 # 🎮 Guess Pokémon Game
 
 [![Vue Version](https://img.shields.io/badge/Vue-3.5.13-brightgreen)](https://vuejs.org/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-blue)](https://tailwindcss.com/) [![依赖状态](https://img.shields.io/badge/dependencies-checked-brightgreen)](https://github.com/Vogadero/guess-pokemon/network/dependencies) [![Test coverage](https://img.shields.io/badge/测试覆盖率-85%25-green?logo=jest)](https://vogadero.github.io/guess-pokemon/coverage) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+
 [![GitHub issues](https://img.shields.io/github/issues/Vogadero/guess-pokemon)](https://github.com/Vogadero/guess-pokemon/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/Vogadero/guess-pokemon)](https://github.com/Vogadero/guess-pokemon/commits/main) [![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Vogadero/guess-pokemon/ci.yml?label=CI%2FCD)](https://github.com/Vogadero/guess-pokemon/actions) [![Security Status](https://snyk.io/test/github/Vogadero/guess-pokemon/badge.svg)](https://snyk.io/test/github/Vogadero/guess-pokemon)
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Vogadero/guess-pokemon/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vogadero/guess-pokemon)
