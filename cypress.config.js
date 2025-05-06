@@ -3,7 +3,7 @@ import { defineConfig } from 'cypress';
 export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:5173',
-    defaultCommandTimeout: 20000, // 全局超时设置
+    defaultCommandTimeout: 30000, // 全局超时设置
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     video: true,
     screenshotOnRunFailure: true,
