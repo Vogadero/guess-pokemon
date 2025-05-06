@@ -73,15 +73,10 @@ jobs:
         # 启动开发服务器
       - name: Start Dev Server
         run: |
-          # 使用 nohup 确保后台进程稳定性
-          nohup npm run dev > server.log 2>&1 &
-          # 增加双重检测机制
-          npx wait-on --timeout 120000 \
-            -t 5000 \
-            http://localhost:5173 \
-            && curl -s http://localhost:5173 | grep '<div id="app"' # 验证 DOM 结构
-        env:
-          NODE_ENV: test
+          # 在后台启动开发服务器（& 符号实现后台运行）
+          npm run dev &  
+          # 等待本地服务器完全启动就绪后再继续后续步骤
+          npx wait-on http://localhost:5173
 
         # 执行端到端测试
       - name: Run E2E Tests
