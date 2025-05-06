@@ -133,6 +133,10 @@ jobs:
     runs-on: ubuntu-latest
     # 仅当主分支时触发
     if: github.ref == 'refs/heads/main'
+    # 权限配置
+    permissions:
+      # 为 GitHub Actions 设置写入权限，以便上传构建产物到 GitHub Pages
+      contents: write
 
     steps:
       # 检出代码
