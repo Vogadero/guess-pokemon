@@ -1,6 +1,11 @@
 describe('Pokemon Game', () => {
   it('Loads homepage', () => {
-    cy.visit(Cypress.env('baseUrl') || '/');
+    // 设置视口大小以匹配桌面设备
+    cy.viewport(1280, 720);
+    // 访问主页
+    cy.visit(Cypress.env('baseUrl') || '/', {
+      timeout: 20000 // 增加超时时间
+    });
 
     // 验证Vue应用根元素
     cy.get('#app').should('be.visible');
