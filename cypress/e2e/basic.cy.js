@@ -6,6 +6,8 @@ describe('Pokemon Game', () => {
     cy.visit(Cypress.env('baseUrl') || '/', {
       timeout: 20000 // 增加超时时间
     });
+    // 在 cy.visit() 后添加应用状态检查
+cy.document().should('have.property', 'readyState', 'complete')
 
     // 验证Vue应用根元素
     cy.get('#app').should('be.visible');
@@ -20,5 +22,12 @@ describe('Pokemon Game', () => {
 
     // 验证页面标题
     cy.title().should('eq', "Who's that pokemon?");
+
+    // 检查控制台错误
+cy.on('window:before:load', (win) => {
+  win.console.error = (msg) => {
+    throw new Error(`Console Error: ${msg}`)
+  }
+})
   });
 });
