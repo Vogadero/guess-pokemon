@@ -62,7 +62,7 @@ jobs:
       - name: Install Dependencies
         run: |
           # 完全安装开发依赖（包含 devDependencies），禁用审计和资金提示
-          npm ci --no-audit --no-fund --include=dev --unsafe-perm
+          npm ci --no-audit --no-fund --include=dev
           # 修复可能因环境变化导致的二进制文件问题
           npm rebuild
 
