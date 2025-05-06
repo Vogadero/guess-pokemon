@@ -1,107 +1,158 @@
+# 持续集成流水线
 name: CI Pipeline
 
+# 触发规则
 on:
+  # 推送 main 和 dev 分支时触发
   push:
     branches: ['main', 'dev']
+  # 合并请求到 main 分支时触发
   pull_request:
     branches: ['main']
 
+# 环境配置
 env:
+  # 根据当前分支动态设置基础 URL（主分支为/guess-pokemon/，其他分支为根路径）
   VITE_BASE_URL: ${{ github.ref == 'refs/heads/main' && '/guess-pokemon/' || '/' }}
 
 jobs:
   test-and-build:
+    # 使用最新 Ubuntu 运行环境
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        # 配置 Node.js 版本策略
         node-version: [18]
+
     steps:
+      # 检出代码
       - name: Checkout Code
         uses: actions/checkout@v4
 
+        # 配置 Node.js 环境
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: 'npm' # 启用 npm 缓存加速安装
 
+        # 缓存依赖项
       - name: Cache Dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+          path: node_modules # 缓存目录
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }} # 基于 lock 文件生成唯一缓存键
 
+        # 安装依赖项
       - name: Install Dependencies
         run: |
-          npm ci --no-audit --no-fund --include=dev # 完整安装依赖
-          npm rebuild # 修复可能的二进制文件问题
+          # 完全安装开发依赖（包含 devDependencies），禁用审计和资金提示
+          npm ci --no-audit --no-fund --include=dev 
+          # 修复可能因环境变化导致的二进制文件问题
+          npm rebuild
 
+        # 执行单元测试
       - name: Run Unit Tests
         run: npm run test:unit
 
+        # 启动开发服务器
       - name: Start Dev Server
         run: |
-          npm run dev &  # 后台运行开发服务器
-          npx wait-on http://localhost:5173  # 等待服务器就绪
+          # 在后台启动开发服务器（& 符号实现后台运行）
+          npm run dev &  
+          # 等待本地服务器完全启动就绪后再继续后续步骤
+          npx wait-on http://localhost:5173
 
+        # 执行端到端测试
       - name: Run E2E Tests
         run: |
+          # 带自定义 base URL 参数运行 E2E 测试
           npm run test:e2e -- --config baseUrl=http://localhost:5173
         env:
+          # 设置 Cypress 全局基础 URL
           CYPRESS_baseUrl: http://localhost:5173
 
+        # 构建项目
       - name: Build Project
         env:
+          # 显式声明生产环境
           NODE_ENV: production
+          # 使用环境变量中的基础路径
           VITE_BASE_URL: ${{ env.VITE_BASE_URL }}
         run: |
-          npm run build -- --base=/guess-pokemon/  # 显式传递 base 参数
+          # 构建生产版本，显式指定 base 路径确保部署位置正确
+          npm run build -- --base=/guess-pokemon/
 
+        # 上传构建产物
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
+          # 构建输出目录名称
           name: dist
+          # 实际路径
           path: dist
 
+        # 失败通知 Slack
       - name: Notify Slack on Failure
+        # 仅在失败时执行
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
+          # Slack Webhook 地址
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          # 红色警告标识
           SLACK_COLOR: '#ff0000'
+          # CI 流水线失败
           SLACK_TITLE: 'CI Pipeline Failed'
+          # 测试或构建在 ${{ github.ref }} 分支失败
           SLACK_MESSAGE: 'Tests or build failed in ${{ github.ref }}'
 
   deploy-prod:
+    # 依赖前序 job 成功
     needs: test-and-build
     runs-on: ubuntu-latest
+    # 仅当主分支时触发
     if: github.ref == 'refs/heads/main'
 
     steps:
+      # 检出代码
       - name: Checkout Code
         uses: actions/checkout@v4
 
+        # 下载构建产物
       - name: Download Build Artifacts
         uses: actions/download-artifact@v4
         with:
+          # 对应上传的 artifact 名称
           name: dist
+          # 解压路径
           path: dist
 
+        # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          # 认证令牌
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 发布目录
           publish_dir: ./dist
 
+        # 成功通知 Slack
       - name: Notify Slack on Success
+        # 仅在成功时执行
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          # 绿色成功标识
           SLACK_COLOR: '#36a64f'
+          # 部署成功
           SLACK_TITLE: 'Deploy Success'
+          # 生产环境部署完成
           SLACK_MESSAGE: 'Production deployment completed'
 
+        # 清理缓存
       - name: Clean Cache
         run: |
+          # 强制清理 npm 缓存避免潜在冲突
           npm cache clean --force
