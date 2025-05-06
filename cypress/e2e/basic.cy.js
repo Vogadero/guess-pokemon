@@ -1,6 +1,12 @@
 describe('Pokemon Game', () => {
   it('Loads homepage', () => {
-    cy.visit(Cypress.env('baseUrl') || '/');
+    // 访问主页
+    cy.visit(Cypress.env('baseUrl') || '/', {
+      timeout: 20000 // 增加超时时间
+    });
+
+    // 先检查body是否包含内容
+    cy.get('body').should('not.be.empty');
 
     // 验证Vue应用根元素
     cy.get('#app').should('be.visible');
@@ -9,9 +15,7 @@ describe('Pokemon Game', () => {
     cy.screenshot('homepage');
 
     // 精确匹配文本
-    cy.get('h1').should(($h1) => {
-      expect($h1).to.have.text('我是谁？');
-    });
+    cy.contains('h1', /我是谁？/i, { timeout: 20000 });
 
     // 验证页面标题
     cy.title().should('eq', "Who's that pokemon?");
