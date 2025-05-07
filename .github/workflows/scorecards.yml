@@ -1,0 +1,24 @@
+name: OpenSSF Scorecard's Scorecard-Action
+on:
+  workflow_dispatch: # 允许手动触发
+  schedule:
+    - cron: '23 15 * * 2' # 每周二UTC时间15:23自动运行
+  push:
+    branches: [main, dev]
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      id-token: write # 用于签名认证
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ossf/scorecard-action@v2
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_results: true # 将结果上传到仓库安全面板
