@@ -1,0 +1,3 @@
+queries:
+  - uses: github/codeql/javascript-queries
+  - path: .github/codeql/queries/my-custom-query.ql
