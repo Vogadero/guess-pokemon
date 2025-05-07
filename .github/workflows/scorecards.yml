@@ -1,4 +1,4 @@
-name: OpenSSF Scorecard's Scorecard-Action
+name: Run OpenSSF Scorecard's Scorecard-Action
 on:
   workflow_dispatch: # 允许手动触发
   schedule:
@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: ossf/scorecard-action@<correct-version>
+      - uses: ossf/scorecard-action@v2.0.0
         with:
           results_file: results.sarif
           results_format: sarif
