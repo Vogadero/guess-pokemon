@@ -1,0 +1,41 @@
+name: Run OpenSSF Scorecard's Scorecard-Action
+on:
+  workflow_dispatch: # 允许手动触发
+  schedule:
+    - cron: '23 15 * * 2' # 每周二UTC时间15:23自动运行
+  push:
+    branches: [main]
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # 仅写入ID令牌权限，用于获取安全分数
+      security-events: write # 仅写入安全事件权限，用于写入安全警报
+      contents: read # 仅读取仓库内容权限，用于获取仓库的最新代码
+
+    steps:
+      - name: Checkout code # 检查代码
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false # 防止Git凭证泄露
+
+      - name: Run OpenSSF Scorecards Analysis # 运行OpenSSF Scorecards分析
+        uses: ossf/scorecard-action@v2.4.1
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_results: true # 将结果上传到仓库安全面板
+
+      - name: Upload Artifact # 上传结果
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5 # 保留5天
+  
+      - name: Upload SARIF Results To Code Scanning # 上传SARIF结果到代码扫描
+        uses: github/codeql-action/upload-sarif@v3.28.17
+        with:
+          sarif_file: results.sarif
