@@ -127,6 +127,12 @@ jobs:
           # 测试或构建在 ${{ github.ref }} 分支失败
           SLACK_MESSAGE: 'Tests or build failed in ${{ github.ref }}'
 
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+
   deploy-prod:
     # 依赖前序 job 成功
     needs: test-and-build

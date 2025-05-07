@@ -2,7 +2,7 @@
 
 ## 报告漏洞
 请通过 GitHub Advisory 报告安全问题：
-https://github.com/Vogadero/guess-pokemon/security/advisories/new
+https://github.com/Vogadero/guess-pokemon/issues/new?template=security.md
 
 ## 支持版本
 | 版本 | 支持状态          |

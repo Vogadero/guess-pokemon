@@ -4,9 +4,11 @@
 
 [![GitHub issues](https://img.shields.io/github/issues/Vogadero/guess-pokemon)](https://github.com/Vogadero/guess-pokemon/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/Vogadero/guess-pokemon)](https://github.com/Vogadero/guess-pokemon/commits/main) [![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Vogadero/guess-pokemon/ci.yml?label=CI%2FCD)](https://github.com/Vogadero/guess-pokemon/actions) [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Vogadero/guess-pokemon/ci.yml)](https://github.com/Vogadero/guess-pokemon/actions/workflows/ci.yml) [![Security Status](https://snyk.io/test/github/Vogadero/guess-pokemon/badge.svg)](https://snyk.io/test/github/Vogadero/guess-pokemon)
 
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Vogadero/guess-pokemon/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vogadero/guess-pokemon) [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/Vogadero/guess-pokemon)](https://securityscorecards.dev/)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/10522/badge)](https://bestpractices.coreinfrastructure.org/projects/10522) [![OpenSSF Best Practices](https://img.shields.io/badge/OpenSSF_Best_Practices-Level_2-017CEE?logo=openssf)](https://github.com/ossf/best-practices) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Vogadero/guess-pokemon/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vogadero/guess-pokemon) [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/Vogadero/guess-pokemon)](https://securityscorecards.dev/)
 
-[![npm 依赖状态](https://img.shields.io/librariesio/github/Vogadero/guess-pokemon?type=npm)](https://libraries.io/github/Vogadero/guess-pokemon) [![release 状态](https://img.shields.io/librariesio/release/npm/guess-pokemon)](https://www.npmjs.com/package/guess-pokemon)
+
+
+
 
 ![Game Screenshot](./docs/screenshot.gif)
 
