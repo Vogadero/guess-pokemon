@@ -29,7 +29,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "preview": "vite preview",
-    "test:unit": "vitest run --dir src --passWithNoTests",
+    "test:unit": "vitest run --dir src --passWithNoTests --coverage.enabled=true",
     "test:e2e": "cypress run --config-file cypress.config.js",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
