@@ -11,7 +11,7 @@ export default mergeConfig(
       root: fileURLToPath(new URL('./', import.meta.url)),
       coverage: {
         provider: 'v8',
-        reporter: ['lcov', 'text', 'json-summary'], // 必须包含 lcov
+        reporter: ['lcov', 'text', 'json-summary', 'json'], // 必须包含 lcov
         reportsDirectory: './coverage', // 明确输出目录
         exclude: ['**/__mocks__/**', '**/*.d.ts', '**/.eslintrc.*', 'vite.config.*']
       }
