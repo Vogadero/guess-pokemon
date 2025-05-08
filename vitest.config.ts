@@ -10,8 +10,10 @@ export default mergeConfig(
       exclude: [...configDefaults.exclude, 'e2e/**'],
       root: fileURLToPath(new URL('./', import.meta.url)),
       coverage: {
-        provider: 'v8', // 必须显式声明
-        reporter: ['text', 'json', 'html']
+        provider: 'v8',
+        reporter: ['lcov', 'text', 'json-summary'], // 必须包含 lcov
+        reportsDirectory: './coverage', // 明确输出目录
+        exclude: ['**/__mocks__/**', '**/*.d.ts', '**/.eslintrc.*', 'vite.config.*']
       }
     }
   })
