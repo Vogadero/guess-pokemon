@@ -66,8 +66,6 @@ jobs:
       - name: Run Unit Tests
         run: |
           npm run test:unit -- --coverage
-          # 修复路径问题
-          mv coverage/lcov.info coverage/lcov.info
 
         # 启动开发服务器
       - name: Start Dev Server
