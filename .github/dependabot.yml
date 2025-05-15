@@ -16,8 +16,6 @@ updates:
     ignore:
       - dependency-name: "*" # 通配符匹配所有包
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
-        # 允许安全更新突破限制
-        ignore-condition: "!security"
 
   - package-ecosystem: 'github-actions'
     directory: '/'
