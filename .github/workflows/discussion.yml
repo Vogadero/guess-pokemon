@@ -3,6 +3,10 @@ on:
   discussion:
     types: [created, edited]
 
+permissions:
+  discussions: write
+  issues: write
+
 jobs:
   triage:
     runs-on: ubuntu-latest
