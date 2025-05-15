@@ -1,0 +1,36 @@
+# Q&A 模板
+name: "❓ 提问"
+description: 提交项目相关问题
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 提问指南
+        <!-- 删除上方注释 -->
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 请清晰描述你遇到的问题
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 如何复现这个问题？（请包含游戏版本、设备信息等）
+      placeholder: |
+        1. 打开...
+        2. 点击...
+        3. 出现...
+  - type: dropdown
+    id: environment
+    attributes:
+      label: 运行环境
+      options:
+        - "桌面端 (Windows/Mac/Linux)"
+        - "移动端 (iOS/Android)"
+        - "其他"
+    validations:
+      required: true

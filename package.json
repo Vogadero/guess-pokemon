@@ -7,10 +7,18 @@
   "author": "Vogadero",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vogadero/guess-pokemon"
+    "url": "https://github.com/Vogadero/guess-pokemon",
+    "directory": "/",
+    "communityProfile": {
+      "docs": "https://github.com/Vogadero/guess-pokemon/wiki",
+      "chat": "https://join.slack.com/t/T08PVT37G4W/shared_invite/zt-34l17yfuq-40VKJO_bTcFyiFfFfNfbSw"
+    }
   },
   "bugs": {
     "url": "https://github.com/Vogadero/guess-pokemon/issues"
+  },
+  "contributing": {
+    "url": "https://github.com/Vogadero/guess-pokemon/blob/main/CONTRIBUTING.md"
   },
   "homepage": "https://github.com/Vogadero/guess-pokemon#readme",
   "license": "MIT",
