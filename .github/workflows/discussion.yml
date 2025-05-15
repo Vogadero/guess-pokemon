@@ -1,0 +1,33 @@
+name: Discussion Management
+on:
+  discussion:
+    types: [created, edited]
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Handle new discussion
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: repo } = await github.rest.repos.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            
+            if (context.payload.discussion.category.slug === 'ideas') {
+              github.rest.reactions.createForDiscussionComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                discussion_number: context.payload.discussion.number,
+                content: 'rocket'
+              });
+              
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.discussion.number,
+                body: `🚀 感谢您的建议！我们已经将其标记为 [${repo.topics.join(' ')}] 相关提案。`
+              });
+            }

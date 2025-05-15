@@ -1,0 +1,17 @@
+# 功能建议模板
+name: "💡 功能建议"
+description: 提交新功能建议
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 建议内容
+      description: 请详细描述你的功能建议
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: 预期收益
+      description: 这个功能会带来什么改进？
