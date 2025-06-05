@@ -31,6 +31,18 @@ A fun Pokémon guessing game built with Vue 3, challenge yourself to identify Po
 - 🎯 Random Pokémon silhouette challenges
 - 📊 Real-time win/loss statistics
 - 🎉 Victory confetti animation
+- 🌐 Multi-language support (中文/English/日本語)
+- 🎨 Theme customization with 12 gradient styles
+- ⚙️ Advanced settings:
+  - 🕹️ Game modes (Normal/Timed)
+  - 🕰️ Trigger delay configuration
+  - 🧬 Generation selection
+  - 🔍 Attribute feature toggle
+- 🥚 Easter egg system:
+  - ✨ Golden envelope animation
+  - 🌀 Vortex particle effects
+  - 🏮 Ancient scroll reveal
+  - 🎖️ Master Badge awarding
 - 🖌️ Tailwind CSS powered UI
 - ⚡ Vue 3 reactive game logic
 - 🧪 Vitest unit testing
