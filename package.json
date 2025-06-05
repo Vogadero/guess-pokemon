@@ -24,15 +24,17 @@
   "license": "MIT",
   "keywords": [
     "vue3",
-    "pokemon",
+    "pokemon", 
     "game",
     "internationalization",
     "multi-language",
     "guess-game",
-    "tailwindcss"
+    "tailwindcss",
+    "settings-panel",
+    "easter-egg"
   ],
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
