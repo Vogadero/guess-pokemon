@@ -280,7 +280,7 @@ const language = computed(() => settingsStorage.data.value.language || 'zh-CN');
 
 
 const logos = [
-    { src: 'src/assets/images/logo01.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ01' },
+    { src: '@/assets/images/logo01.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ01' },
     { src: 'src/assets/images/logo02.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ02' },
     { src: 'src/assets/images/logo03.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ03' },
     { src: 'src/assets/images/logo04.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ04' },
