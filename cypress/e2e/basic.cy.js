@@ -15,7 +15,7 @@ describe('Pokemon Game', () => {
     cy.screenshot('homepage');
 
     // 精确匹配文本
-    cy.contains('h1', /我是谁？/i, { timeout: 20000 });
+    cy.contains('h1', /？？？/i, { timeout: 20000 });
 
     // 验证页面标题
     cy.title().should('eq', "Who's that pokemon?");
