@@ -47,7 +47,7 @@
 
       <!-- 自动模式下的倒计时组件 - 优化版 -->
       <div v-else-if="triggerType === 'auto' && !isLoading && countdown > 0"
-        class="countdown-timer relative w-24 h-24 flex items-center justify-center">
+        class="countdown-timer relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
         <!-- 倒计时背景圆环 -->
         <svg class="absolute w-full h-full" viewBox="0 0 100 100">
           <!-- 背景圆环 - 更柔和的颜色 -->
@@ -150,7 +150,32 @@ const loadingComponent = computed(() => {
 // 获取触发类型和延迟时间
 const triggerType = computed(() => settingsStorage.data.value.triggerType || 'manual');
 const triggerDelay = computed(() => settingsStorage.data.value.triggerDelay || 1000);
-const language = computed(() => settingsStorage.data.value.language || 'zh-CN');
+const language = computed(() => {
+  const lang = settingsStorage.data.value.language;
+  return (['en', 'ja', 'zh-CN'].includes(lang) ? lang : 'en') as 'en' | 'ja' | 'zh-CN';
+});
+
+// 新增：页面标题多语言映射
+const pageTitles: Record<'en' | 'ja' | 'zh-CN', string> = {
+  'en': 'Who\'s that pokemon?',
+  'ja': 'ポケモンクイズ？',
+  'zh-CN': '猜猜这是哪个宝可梦？'
+};
+
+// 新增：更新标题的方法
+const updatePageTitle = () => {
+  document.title = pageTitles[language.value] ?? pageTitles.en;
+};
+
+// 新增：组件挂载时初始化标题
+onMounted(() => {
+  updatePageTitle();
+});
+
+// 新增：监听语言变化
+watch(language, () => {
+  updatePageTitle();
+});
 
 // 倒计时状态
 const countdown = ref(30);
