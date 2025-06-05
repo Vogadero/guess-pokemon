@@ -280,19 +280,19 @@ const language = computed(() => settingsStorage.data.value.language || 'zh-CN');
 
 
 const logos = [
-    { src: '../../../assets/images/logo01.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ01' },
-    { src: 'src/assets/images/logo02.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ02' },
-    { src: 'src/assets/images/logo03.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ03' },
-    { src: 'src/assets/images/logo04.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ04' },
-    { src: 'src/assets/images/logo05.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ05' },
-    { src: 'src/assets/images/logo07.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ06' },
-    { src: 'src/assets/images/logo06.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ07' },
-    { src: 'src/assets/images/logo08.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ08' },
-    { src: 'src/assets/images/logo09.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ09' },
-    { src: 'src/assets/images/logo10.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ10' },
-    { src: 'src/assets/images/logo11.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ11' },
-    { src: 'src/assets/images/logo12.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ12' },
-    { src: 'src/assets/images/logo13.png', alt: language.value === 'ja' ? '中国語' : 'ロゴ13' },
+    { src: new URL('@/assets/images/logo01.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ01' },
+    { src: new URL('@/assets/images/logo02.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ02' },
+    { src: new URL('@/assets/images/logo03.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ03' },
+    { src: new URL('@/assets/images/logo04.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ04' },
+    { src: new URL('@/assets/images/logo05.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ05' },
+    { src: new URL('@/assets/images/logo07.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ06' },
+    { src: new URL('@/assets/images/logo06.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ07' },
+    { src: new URL('@/assets/images/logo08.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ08' },
+    { src: new URL('@/assets/images/logo09.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ09' },
+    { src: new URL('@/assets/images/logo10.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ10' },
+    { src: new URL('@/assets/images/logo11.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ11' },
+    { src: new URL('@/assets/images/logo12.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ12' },
+    { src: new URL('@/assets/images/logo13.png', import.meta.url).href, alt: language.value === 'ja' ? '中国語' : 'ロゴ13' },
 ];
 </script>
 
