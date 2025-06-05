@@ -1,0 +1,128 @@
+[
+  {
+    "attribute": "bug",
+    "chinese_attribute": "虫",
+    "japanese_attribute": "虫",
+    "backgroundColor": "#41A259",
+    "svg": "#gp-icon-liuchengdan-bingchonghaifangzhi"
+  },
+  {
+    "attribute": "dark",
+    "chinese_attribute": "恶",
+    "japanese_attribute": "悪",
+    "backgroundColor": "#000",
+    "svg": "#gp-icon-eyilanjie"
+  },
+  {
+    "attribute": "dragon",
+    "chinese_attribute": "龙",
+    "japanese_attribute": "竜",
+    "backgroundColor": "#7B6BF2",
+    "svg": "#gp-icon-long"
+  },
+  {
+    "attribute": "electric",
+    "chinese_attribute": "电",
+    "japanese_attribute": "電気",
+    "backgroundColor": "#F6EF37",
+    "svg": "#gp-icon-dian"
+  },
+  {
+    "attribute": "fairy",
+    "chinese_attribute": "妖精",
+    "japanese_attribute": "妖精",
+    "backgroundColor": "#EF97E6",
+    "svg": "#gp-icon-yaojing"
+  },
+  {
+    "attribute": "fighting",
+    "chinese_attribute": "格斗",
+    "japanese_attribute": "格闘",
+    "backgroundColor": "#D94256",
+    "svg": "#gp-icon-duizhan"
+  },
+  {
+    "attribute": "fire",
+    "chinese_attribute": "火",
+    "japanese_attribute": "火",
+    "backgroundColor": "#FF7B15",
+    "svg": "#gp-icon-daochu1024-07"
+  },
+  {
+    "attribute": "flying",
+    "chinese_attribute": "飞行",
+    "japanese_attribute": "飛行",
+    "backgroundColor": "#9BB4E8",
+    "svg": "#gp-icon-feihangjihua"
+  },
+  {
+    "attribute": "ghost",
+    "chinese_attribute": "幽灵",
+    "japanese_attribute": "幽霊",
+    "backgroundColor": "#6970C5",
+    "svg": "#gp-icon-youling31"
+  },
+  {
+    "attribute": "grass",
+    "chinese_attribute": "草",
+    "japanese_attribute": "草",
+    "backgroundColor": "#5DBE62",
+    "svg": "#gp-icon-grass"
+  },
+  {
+    "attribute": "ground",
+    "chinese_attribute": "地面",
+    "japanese_attribute": "地面",
+    "backgroundColor": "#D78555",
+    "svg": "#gp-icon-dimian"
+  },
+  {
+    "attribute": "ice",
+    "chinese_attribute": "冰",
+    "japanese_attribute": "氷",
+    "backgroundColor": "#80E1FF",
+    "svg": "#gp-icon-bingkuai"
+  },
+  {
+    "attribute": "normal",
+    "chinese_attribute": "一般",
+    "japanese_attribute": "普通",
+    "backgroundColor": "#9A9DA1",
+    "svg": "#gp-icon-jichu_yiban"
+  },
+  {
+    "attribute": "poison",
+    "chinese_attribute": "毒",
+    "japanese_attribute": "毒",
+    "backgroundColor": "#B563CE",
+    "svg": "#gp-icon-virus-fill"
+  },
+  {
+    "attribute": "psychic",
+    "chinese_attribute": "超能力",
+    "japanese_attribute": "超能力",
+    "backgroundColor": "#0052D9",
+    "svg": "#gp-icon-a-IUNOUAU-energy-studio-32"
+  },
+  {
+    "attribute": "rock",
+    "chinese_attribute": "岩石",
+    "japanese_attribute": "岩石",
+    "backgroundColor": "#CEC18C",
+    "svg": "#gp-icon-yanshi"
+  },
+  {
+    "attribute": "steel",
+    "chinese_attribute": "钢",
+    "japanese_attribute": "鋼",
+    "backgroundColor": "#333",
+    "svg": "#gp-icon-yly_xinggang"
+  },
+  {
+    "attribute": "water",
+    "chinese_attribute": "水",
+    "japanese_attribute": "水",
+    "backgroundColor": "#559EDF",
+    "svg": "#gp-icon-shui"
+  }
+]
