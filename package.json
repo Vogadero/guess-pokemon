@@ -24,7 +24,7 @@
   "license": "MIT",
   "keywords": [
     "vue3",
-    "pokemon", 
+    "pokemon",
     "game",
     "internationalization",
     "multi-language",
@@ -44,7 +44,9 @@
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy:github": "gh-pages -d dist -b gh-pages -r origin",
+    "deploy:gitee": "gh-pages -d dist -b gh-pages -r gitee",
+    "deploy:all": "npm run deploy:github && npm run deploy:gitee",
     "coverage": "vitest run --coverage"
   },
   "engines": {
