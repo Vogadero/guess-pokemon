@@ -46,7 +46,8 @@
     "predeploy": "npm run build",
     "deploy:github": "gh-pages -d dist -b gh-pages -r origin",
     "deploy:gitee": "gh-pages -d dist -b gh-pages -r gitee",
-    "deploy:all": "npm run deploy:github && npm run deploy:gitee",
+    "deploy:atomgit": "gh-pages -d dist -b gh-pages -r atomgit",
+    "deploy:all": "npm run deploy:github && npm run deploy:gitee && npm run deploy:atomgit",
     "coverage": "vitest run --coverage"
   },
   "engines": {
