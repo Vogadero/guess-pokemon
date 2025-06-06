@@ -1,4 +1,4 @@
-name: Sync to Gitee
+name: Sync to Atomgit
 # 触发规则
 on:
   # 推送 main 和 dev 分支时触发
@@ -19,11 +19,11 @@ jobs:
         with:
           fetch-depth: 0 
           
-      - name: Push to Gitee
+      - name: Push to Atomgit
         run: |
-          git remote add gitee https://Vogadero:${{ secrets.GITEE_TOKEN }}@gitee.com/Vogadero/guess-pokemon.git
+          git remote add atomgit https://Vogadero:${{ secrets.ATOMGIT_TOKEN }}@atomgit.com/Vogadero/guess-pokemon.git
           if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
             git fetch --unshallow origin
           fi
-          git push gitee --all --force # 推送所有分支
-          git push gitee --tags --force # 推送所有标签
+          git push atomgit --all --force # 推送所有分支
+          git push atomgit --tags --force # 推送所有标签
