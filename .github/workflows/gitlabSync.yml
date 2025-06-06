@@ -1,0 +1,29 @@
+name: Sync to Gitlab
+# 触发规则
+on:
+  # 推送 main 和 dev 分支时触发
+  push:
+    branches: ['main', 'dev']
+  # 合并请求到 main 分支时触发
+  pull_request:
+    branches: ['main']
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+          
+      - name: Push to Gitlab
+        run: |
+          git remote add gitlab https://vogadero:${{ secrets.GITLAB_TOKEN }}@gitlab.hk/vogadero/guess-pokemon.git
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            git fetch --unshallow origin
+          fi
+          git push gitlab --all --force # 推送所有分支
+          git push gitlab --tags --force # 推送所有标签
