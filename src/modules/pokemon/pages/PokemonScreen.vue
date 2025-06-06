@@ -157,14 +157,14 @@ const language = computed(() => {
 
 // 新增：页面标题多语言映射
 const pageTitles: Record<'en' | 'ja' | 'zh-CN', string> = {
-  'en': 'Who\'s that pokemon?',
+  'en': "Who's that pokemon?",
   'ja': 'ポケモンクイズ？',
   'zh-CN': '猜猜这是哪个宝可梦？'
 };
 
 // 新增：更新标题的方法
 const updatePageTitle = () => {
-  document.title = pageTitles[language.value] ?? pageTitles.en;
+  document.title = pageTitles[language.value] || '猜猜这是哪个宝可梦？';
 };
 
 // 新增：组件挂载时初始化标题

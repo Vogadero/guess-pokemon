@@ -98,7 +98,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 // 获取设置：是否显示属性信息层
 const settingsStorage = useLocalStorage('pokemonSettings', {
-  showAttributeAppearance: true, // 默认显示属性信息层
+  showAttributeAppearance: false,
   language: 'zh-CN'
 });
 
