@@ -21,7 +21,7 @@ jobs:
           
       - name: Push to Atomgit
         run: |
-          git remote add atomgit https://Vogadero:${{ secrets.ATOMGIT_TOKEN }}@atomgit.com/Vogadero/guess-pokemon.git
+          git remote add atomgit https://vogadero:${{ secrets.ATOMGIT_TOKEN }}@atomgit.com/vogadero/guess-pokemon.git
           if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
             git fetch --unshallow origin
           fi

@@ -21,7 +21,7 @@ jobs:
           
       - name: Push to Gitee
         run: |
-          git remote add gitee https://Vogadero:${{ secrets.GITEE_TOKEN }}@gitee.com/Vogadero/guess-pokemon.git
+          git remote add gitee https://vogadero:${{ secrets.GITEE_TOKEN }}@gitee.com/vogadero/guess-pokemon.git
           if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
             git fetch --unshallow origin
           fi
