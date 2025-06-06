@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'LXGWWenKaiMonoGB-Medium'; /* 自定义字体名称 */
+  src: url('/fonts/LXGWWenKaiMonoGB-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

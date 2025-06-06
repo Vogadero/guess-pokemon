@@ -7,7 +7,7 @@
   </transition>
   <section v-if="!isLoading" class="flex flex-col justify-around items-center w-screen h-screen">
     <TabPanel />
-    <h1 class="fade-in m-6 font-sans text-4xl font-bold">{{ showName ? (language === 'en' ? randomPokemon.name :
+    <h1 class="fade-in m-6 text-4xl font-bold">{{ showName ? (language === 'en' ? randomPokemon.name :
       language === 'ja' ? randomPokemon.japaneseName : randomPokemon.chineseName) : '？？？' }}</h1>
     <!-- 修改得分展示为动态进度条 -->
     <div
