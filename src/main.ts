@@ -1,5 +1,6 @@
 import './assets/styles.css';
 import './assets/animation.css';
+import './assets/fonts.css'
 
 import { createApp } from 'vue';
 import Toast from "vue-toastification";
