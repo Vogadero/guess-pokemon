@@ -19,6 +19,9 @@ jobs:
       - name: Push to Gitee
         run: |
           git remote add gitee https://Vogadero:${{ secrets.GITEE_TOKEN }}@gitee.com/Vogadero/guess-pokemon.git
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            git fetch --unshallow origin
+          fi
           git fetch --unshallow origin # 获取完整提交历史
           git push gitee --all --force # 推送所有分支
           git push gitee --tags --force # 推送所有标签
