@@ -165,7 +165,7 @@ jobs:
       - name: Deploy via gh-pages
         run: |
           npm install gh-pages
-          npx gh-pages -d dist -b gh-pages -r origin
+          npx gh-pages -d dist -b gh-pages -r https://github.com/Vogadero/guess-pokemon.git
         env:
           GIT_USER: "GitHub Actions"
           GIT_EMAIL: "actions@github.com"
