@@ -162,21 +162,13 @@ jobs:
           path: dist
 
         # 部署到 GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          # 认证令牌
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # 发布目录
-          publish_dir: ./dist
-          # 强制部署到根目录
-          destination_dir: .  
-          # 清理旧文件
-          keep_files: false   
-          # 强制单分支模式
-          force_orphan: true  
-          # 显式声明CNAME
-          cname: vogadero.github.io/guess-pokemon 
+      - name: Deploy via gh-pages
+        run: |
+          npm install gh-pages
+          npx gh-pages -d dist -b gh-pages -r origin
+        env:
+          GIT_USER: "GitHub Actions"
+          GIT_EMAIL: "actions@github.com"
 
         # 成功通知 Slack
       - name: Notify Slack on Success
