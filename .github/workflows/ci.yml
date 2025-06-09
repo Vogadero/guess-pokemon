@@ -174,9 +174,11 @@ jobs:
         with:
           path: dist
 
-      # 部署步骤
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # 成功通知 Slack
       - name: Notify Slack on Success
