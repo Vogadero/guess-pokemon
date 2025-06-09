@@ -161,16 +161,23 @@ jobs:
           # 解压路径
           path: dist
 
-        # 部署到 GitHub Pages
-      - name: Deploy via gh-pages
-        run: |
-          npm install gh-pages
-          npx gh-pages -d dist -b gh-pages -r https://github.com/Vogadero/guess-pokemon.git
-        env:
-          GIT_USER: "GitHub Actions"
-          GIT_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
+      # 配置 GitHub Pages 部署
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
 
-        # 成功通知 Slack
+      # 上传构建产物到 GitHub Pages
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      # 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 成功通知 Slack
       - name: Notify Slack on Success
         # 仅在成功时执行
         if: success()
