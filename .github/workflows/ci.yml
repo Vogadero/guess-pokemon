@@ -33,7 +33,6 @@ jobs:
       matrix:
         # 配置 Node.js 版本策略
         node-version: [18]
-    
 
     steps:
       # 检出代码
@@ -176,9 +175,14 @@ jobs:
 
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: crazy-max/ghaction-github-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # 部署到 gh-pages 分支
+          target_branch: gh-pages
+          # 部署目录
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # 成功通知 Slack
       - name: Notify Slack on Success
