@@ -20,6 +20,8 @@ on:
 env:
   # 根据当前分支动态设置基础 URL（主分支为/guess-pokemon/，其他分支为根路径）
   VITE_BASE_URL: ${{ github.ref == 'refs/heads/main' && '/guess-pokemon/' || '/' }}
+  # 新增部署目标标识
+  VITE_DEPLOY_TARGET: 'github'  
 
 jobs:
   test-and-build:
