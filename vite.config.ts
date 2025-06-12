@@ -5,7 +5,13 @@ import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/guess-pokemon/' : '/',
+  // GitHub Pages 保持子路径；AtomGit 使用根路径；开发环境使用根路径
+  base:
+    process.env.VITE_DEPLOY_TARGET === 'github'
+      ? '/guess-pokemon/'
+      : process.env.NODE_ENV === 'production'
+        ? '/'
+        : '/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
