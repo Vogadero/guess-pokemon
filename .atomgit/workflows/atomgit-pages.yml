@@ -38,11 +38,9 @@ jobs:
           NODE_ENV: production
 
       - name: Deploy to AtomGit Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: atomgit/gh-pages-deploy@v3
         with:
-          deploy_key: ${{ secrets.SSH_KEY }}
+          ssh_key: ${{ secrets.Deploy Key (gh-pages) }}
           publish_dir: ./dist
-          destination_dir: .
-          # 保持gh-pages分支干净
-          force_orphan: true
-          keep_files: false
+          target_branch: gh-pages
+          clean: true
