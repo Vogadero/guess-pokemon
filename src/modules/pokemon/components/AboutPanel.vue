@@ -200,8 +200,7 @@
                     </div>
 
                     <!-- TwitterX -->
-                    <a href="https://x.com/Vogadero?s=09" :title="language === 'en' ? 'TwitterX' : language === 'ja' ? 'TwitterX' :
-                        'TwitterX'" target="_blank" rel="noopener noreferrer"
+                    <a href="https://x.com/Vogadero?s=09" title="TwitterX" target="_blank" rel="noopener noreferrer"
                         class="w-6 md:w-5 h-6 md:h-5 text-gray-800 hover:scale-110 transition-transform duration-200">
                         <svg class="w-4 h-4 text-gray-600" aria-hidden="true">
                             <use xlink:href="#gp-icon-RsssiTwitterXFill-01"></use>
@@ -209,8 +208,7 @@
                     </a>
 
                     <!-- GitHub -->
-                    <a href="https://github.com/Vogadero/guess-pokemon" :title="language === 'en' ? 'GitHub' : language === 'ja' ? 'GitHub' :
-                        'GitHub'" target="_blank"
+                    <a href="https://github.com/Vogadero/guess-pokemon" title="GitHub" target="_blank"
                         rel="noopener noreferrer"
                         class="w-6 md:w-5 h-6 md:h-5 text-gray-800 hover:scale-110 transition-transform duration-200">
                         <svg class="w-4 h-4 text-gray-600" aria-hidden="true">
@@ -219,12 +217,29 @@
                     </a>
 
                     <!-- Gitee -->
-                    <a href="https://gitee.com/Vogadero/guess-pokemon" :title="language === 'en' ? 'Gitee' : language === 'ja' ? 'Gitee' :
-                        'Gitee'" target="_blank"
+                    <a href="https://gitee.com/Vogadero/guess-pokemon" title="Gitee" target="_blank"
                         rel="noopener noreferrer"
                         class="w-6 md:w-5 h-6 md:h-5 text-red-600 hover:scale-110 transition-transform duration-200">
                         <svg class="w-4 h-4 text-gray-600" aria-hidden="true">
                             <use xlink:href="#gp-icon-gitee"></use>
+                        </svg>
+                    </a>
+
+                    <!-- Gitlab -->
+                    <a href="https://gitlab.hk/vogadero/guess-pokemon.git" title="Gitlab" target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-6 md:w-5 h-6 md:h-5 text-red-600 hover:scale-110 transition-transform duration-200">
+                        <svg class="w-4 h-4 text-gray-600" aria-hidden="true">
+                            <use xlink:href="#gp-icon-gitlab2"></use>
+                        </svg>
+                    </a>
+
+                    <!-- AtomGit -->
+                    <a href="https://atomgit.com/vogadero/guess-pokemon" title="AtomGit" target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-6 md:w-5 h-6 md:h-5 text-red-600 hover:scale-110 transition-transform duration-200">
+                        <svg class="w-4 h-4 text-gray-600" aria-hidden="true">
+                            <use xlink:href="#gp-icon-atom"></use>
                         </svg>
                     </a>
                 </div>
