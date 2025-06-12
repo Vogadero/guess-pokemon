@@ -7,11 +7,11 @@
   </transition>
   <section v-if="!isLoading" class="flex flex-col justify-around items-center w-screen h-screen">
     <TabPanel />
-    <h1 class="fade-in m-6 text-4xl font-bold">{{ showName ? (language === 'en' ? randomPokemon.name :
+    <h1 class="fade-in m-5 text-4xl font-bold">{{ showName ? (language === 'en' ? randomPokemon.name :
       language === 'ja' ? randomPokemon.japaneseName : randomPokemon.chineseName) : '？？？' }}</h1>
     <!-- 修改得分展示为动态进度条 -->
     <div
-      class="fade-in mb-6 w-80 h-8 bg-slate-100 rounded-full overflow-hidden border-2 border-slate-200 shadow-inner relative">
+      class="fade-in w-80 h-8 bg-slate-100 rounded-full overflow-hidden border-2 border-slate-200 shadow-inner relative">
       <!-- 正确进度条（左侧） -->
       <div class="h-full transition-all duration-500 ease-out flex items-center justify-end absolute left-0" :style="{
         width: `${correctPercentage}%`,
@@ -38,7 +38,7 @@
     </div>
 
     <!-- 修改部分：根据triggerType显示按钮或倒计时 -->
-    <div class="fade-in h-16 flex justify-center items-center">
+    <div class="fade-in m-5 h-16 flex justify-center items-center">
       <button v-if="triggerType === 'manual' && isPlaying" :style="buttonStyle"
         class="text-black font-bold rounded-full py-3 px-6 cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out transform-gpu capitalize"
         @click="handleManualNextRound">

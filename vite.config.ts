@@ -9,9 +9,11 @@ export default defineConfig({
   base:
     process.env.VITE_DEPLOY_TARGET === 'github'
       ? '/guess-pokemon/'
-      : process.env.NODE_ENV === 'production'
-        ? '/'
-        : '/',
+      : process.env.VITE_DEPLOY_TARGET === 'atomgit'
+        ? '/guess-pokemon-pages/'
+        : process.env.NODE_ENV === 'production'
+          ? '/'
+          : '/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
