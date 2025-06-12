@@ -19,23 +19,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 
-
-      - name: Setup branch mapping
-        run: |
-          # 创建本地master分支并指向main
-          git branch -f master main
           
       - name: Push to Atomgit
         run: |
           git remote add atomgit https://vogadero:${{ secrets.ATOMGIT_TOKEN }}@atomgit.com/vogadero/guess-pokemon.git
-          
           if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
             git fetch --unshallow origin
           fi
-
-          # 推送分支映射：main->master, dev->dev
-          git push atomgit master:master --force
-          git push atomgit dev:dev --force
-
-          # 推送所有标签
-          git push atomgit --tags --force 
+          git push atomgit --all --force # 推送所有分支
+          git push atomgit --tags --force # 推送所有标签
