@@ -242,6 +242,15 @@
                             <use xlink:href="#gp-icon-atom"></use>
                         </svg>
                     </a>
+
+                    <!-- GitCode -->
+                    <a href="https://gitcode.com/vogadero/guess-pokemon" title="GitCode" target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-6 md:w-5 h-6 md:h-5 text-red-600 hover:scale-110 transition-transform duration-200">
+                        <svg class="w-4 h-4 text-gray-600" aria-hidden="true">
+                            <use xlink:href="#gp-icon-GitCode-logo"></use>
+                        </svg>
+                    </a>
                 </div>
             </div>
 
