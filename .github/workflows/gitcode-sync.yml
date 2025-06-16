@@ -22,7 +22,7 @@ jobs:
           
       - name: Push to GitCode
         run: |
-          git remote add gitcode https://vogadero:${{ secrets.GITCODE_TOKEN }}@gitcode.com/qq_39150901/guess-pokemon.git
+          git remote add gitcode https://vogadero:${{ secrets.GITCODE_TOKEN }}@gitcode.com/vogadero/guess-pokemon.git
           if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
             git fetch --unshallow origin
           fi

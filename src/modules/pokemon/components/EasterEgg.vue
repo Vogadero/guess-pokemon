@@ -256,7 +256,7 @@ const closeScroll = () => {
 const scrollContent = ref<HTMLElement | null>(null);
 const isScrollPaused = ref(false);
 const scrollAnimationId = ref<number | null>(null);
-const scrollSpeed = 0.5; // 每次滚动的像素数，数值越小滚动越慢
+const scrollSpeed = 0.7; // 每次滚动的像素数，数值越小滚动越慢
 
 // 滚动动画
 const autoScroll = () => {
