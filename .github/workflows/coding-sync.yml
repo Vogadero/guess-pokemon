@@ -1,0 +1,30 @@
+name: Sync to Coding
+# 触发规则
+on:
+  # 推送 main 和 dev 分支时触发
+  push:
+    branches: ['main', 'dev']
+  # 合并请求到 main 分支时触发
+  pull_request:
+    branches: ['main']
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+          
+      - name: Push to Coding
+        run: |
+          git remote add coding https://vogadero:${{ secrets.CODING_TOKEN }}@e.coding.net/g-ierv3595/guess-pokemon/guess-pokemon.git
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            git fetch --unshallow origin
+          fi
+          git push coding --all --force # 推送所有分支
+          git push coding --tags --force # 推送所有标签

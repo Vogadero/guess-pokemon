@@ -42,6 +42,8 @@
     "build:gitlab": "cross-env VITE_DEPLOY_TARGET=gitlab vite build",
     "build:atomgit": "cross-env VITE_DEPLOY_TARGET=atomgit vite build",
     "build:gitcode": "cross-env VITE_DEPLOY_TARGET=gitcode vite build",
+    "build:coding": "cross-env VITE_DEPLOY_TARGET=coding vite build",
+    "build:aliyun": "cross-env VITE_DEPLOY_TARGET=aliyun vite build",
     "type-check": "vue-tsc --build",
     "preview": "vite preview",
     "test:unit": "vitest run --dir src --passWithNoTests --coverage.enabled=true",
@@ -54,7 +56,7 @@
     "deploy:gitlab": "cross-env VITE_DEPLOY_TARGET=gitlab npm run predeploy && gh-pages -d dist -b gh-pages -r https://$GITLAB_TOKEN@gitlab.hk/vogadero/guess-pokemon.git",
     "deploy:atomgit": "cross-env VITE_DEPLOY_TARGET=atomgit npm run predeploy && gh-pages -d dist -b master -r https://atomgit.com/vogadero/guess-pokemon-pages.git",
     "deploy:gitcode": "cross-env VITE_DEPLOY_TARGET=gitcode npm run predeploy && gh-pages -d dist -b main -r https://$GITCODE_TOKEN@gitcode.com/vogadero/guess-pokemon.git",
-    "deploy:all": "npm run deploy:github && npm run deploy:gitlab && npm run deploy:gitee && npm run deploy:atomgit",
+    "deploy:all": "npm run deploy:github && npm run deploy:gitee && npm run deploy:gitlab && npm run deploy:atomgit && npm run deploy:gitcode",
     "coverage": "vitest run --coverage"
   },
   "engines": {
