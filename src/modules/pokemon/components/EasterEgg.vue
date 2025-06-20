@@ -135,8 +135,22 @@
                                         '大师徽章'" class="award-image">
 
                                     <!-- 彩蛋图案 -->
-                                    <!-- <img src="@/assets/images/pattern.png" :alt="language === 'en' ? 'Easter Egg' : language === 'ja' ? 'イースターエッグ' :
-                                        '彩蛋'" class="texture-pattern w-full h-24 object-cover my-6 rounded-lg shadow-md"> -->
+                                    <div class="flex w-full gap-4 mt-6 pr-4">
+                                        <img src="@/assets/images/pattern.png" 
+                                             :alt="language === 'en' ? 'Easter Egg' : language === 'ja' ? 'イースターエッグ' : '彩蛋'" 
+                                             class="texture-pattern w-1/2 h-full object-cover rounded-lg shadow-md">
+                                        <img src="@/assets/images/pattern2.png" 
+                                             :alt="language === 'en' ? 'Easter Egg' : language === 'ja' ? 'イースターエッグ' : '彩蛋'" 
+                                             class="texture-pattern w-1/2 h-full object-cover rounded-lg shadow-md">
+                                    </div>
+                                    <div class="flex w-full gap-4 mb-6 mt-4 pr-4">
+                                        <img src="@/assets/images/pattern3.png" 
+                                             :alt="language === 'en' ? 'Easter Egg' : language === 'ja' ? 'イースターエッグ' : '彩蛋'" 
+                                             class="texture-pattern w-1/2 h-full object-cover rounded-lg shadow-md">
+                                        <img src="@/assets/images/pattern4.png" 
+                                             :alt="language === 'en' ? 'Easter Egg' : language === 'ja' ? 'イースターエッグ' : '彩蛋'" 
+                                             class="texture-pattern w-1/2 h-full object-cover rounded-lg shadow-md">
+                                    </div>
 
                                     <!-- 开发者后记 -->
                                     <div class="developer-note mb-6">
