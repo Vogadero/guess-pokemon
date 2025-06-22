@@ -79,7 +79,7 @@
     "url": "https://github.com/sponsors/Vogadero"
   },
   "dependencies": {
-    "@vueuse/components": "^13.2.0",
+    "@vueuse/components": "^13.3.0",
     "@vueuse/core": "^13.3.0",
     "axios": "^1.7.9",
     "canvas-confetti": "^1.9.3",
