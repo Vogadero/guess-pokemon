@@ -187,7 +187,7 @@ jobs:
 
       # 上传构建产物到 GitHub Pages
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
