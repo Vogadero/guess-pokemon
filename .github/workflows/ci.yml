@@ -174,7 +174,7 @@ jobs:
 
         # 下载构建产物
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           # 对应上传的 artifact 名称
           name: dist
