@@ -39,7 +39,7 @@ jobs:
     steps:
       # 检出代码
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
         # 配置 Node.js 环境
       - name: Setup Node.js ${{ matrix.node-version }}
@@ -154,7 +154,7 @@ jobs:
     steps:
       # 检出代码
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
